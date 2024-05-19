@@ -13,9 +13,9 @@ DevHelper es una aplicación de escritorio diseñada para ayudar en la organizac
 
 - Maven 3.9.5
 - Java 18.0.2.1
+- derby 10.16.1.1
 - Se recomienda utilizar NetBeans como entorno de desarrollo integrado (IDE)
 - <a href='https://github.com/dicsstartup/DevFormFx'>Biblioteca DevFormFX</a>
-- <a href='https://github.com/dicsstartup/DevBDLocal'> Biblioteca DevBDLocal</a>
 - <a href='https://www.figma.com/file/7ts8wiOfzLFndoeHpIG90W/HelperDev?type=design&node-id=0%3A1&mode=design&t=QSoy5XS1kxMI34oC-1'>Figma (para referencia de diseño)</a>
 
 ## Partes
@@ -71,7 +71,7 @@ Apartado donde hay un listado de credenciales cifradas
 
 Se rechazaran pull request donde se hagan cambios en diferentes apartados sin motivo, se recomienda hacer una por cada apartado.
 Se creara modular por lo que se requiere orden en el codigo y comentarios.
-Para el uso de Formularios o guardar informacion se requiere el uso de las librerias <a href='https://github.com/dicsstartup/DevFormFx'>DevFormFX</a> <a href='https://github.com/dicsstartup/DevBDLocal'>DevBDLocal</a> (Salvo casos muy especificos).
+Para el uso de Formularios se requiere el uso de la libreria <a href='https://github.com/dicsstartup/DevFormFx'>DevFormFX</a> (Salvo casos muy especificos).
 
 ## Licencia
 
