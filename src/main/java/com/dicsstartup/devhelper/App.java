@@ -1,7 +1,7 @@
 package com.dicsstartup.devhelper;
 
-import com.dicsstartup.devhelper.core.entitys.User;
-import com.dicsstartup.devhelper.core.service.UserService;
+import com.dicsstartup.devhelper.core.entitys.Person;
+import com.dicsstartup.devhelper.core.service.PersonService;
 import com.dicsstartup.devhelper.core.util.HibernateUtil;
 import jakarta.persistence.EntityManager;
 import javafx.application.Application;
@@ -23,12 +23,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         manager = HibernateUtil.getEntityManagerFactory().createEntityManager();
-        UserService userService = new UserService(manager);
-        User nuevo = new User();
+        PersonService userService = new PersonService(manager);
+        Person nuevo = new Person();
         nuevo.setNick("didier");
         nuevo.setPassword("password");
         userService.guardar(nuevo);
-        User us = userService.buscar(User.class, 1);
+        Person us = userService.buscar(Person.class, 1);
         System.out.println(us);
         scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);
