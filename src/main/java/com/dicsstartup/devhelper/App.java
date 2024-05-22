@@ -1,47 +1,36 @@
 package com.dicsstartup.devhelper;
 
-import com.dicsstartup.devhelper.core.entitys.Person;
-import com.dicsstartup.devhelper.core.service.PersonService;
 import com.dicsstartup.devhelper.core.util.HibernateUtil;
-import jakarta.persistence.EntityManager;
+import com.dicsstartup.devhelper.core.util.StageManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
-    private static EntityManager manager;
-
-    private static Scene scene;
+    @Override
+    public void init() throws Exception {
+        HibernateUtil.getInstance();
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
-        manager = HibernateUtil.getEntityManagerFactory().createEntityManager();
-        PersonService userService = new PersonService(manager);
-        Person nuevo = new Person();
-        nuevo.setNick("didier");
-        nuevo.setPassword("password");
-        userService.guardar(nuevo);
-        Person us = userService.buscar(Person.class, 1);
-        System.out.println(us);
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+        StageManager stageManager = StageManager.getInstance(this);
+        stageManager.setPrimaryStage(stage);
+        stageManager.getPrimaryStage().setTitle("DevHelper");
+        stageManager.getPrimaryStage().setResizable(false);
+        Image icon = new Image(getClass().getResourceAsStream("images/logo.png"));
+        stageManager.getPrimaryStage().getIcons().add(icon);
+        stageManager.startApplication();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    @Override
+    public void stop() throws Exception {
+        HibernateUtil.getInstance().shutdown();
     }
 
     public static void main(String[] args) {

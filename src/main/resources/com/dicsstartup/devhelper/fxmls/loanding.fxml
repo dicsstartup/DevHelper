@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../styles/app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dicsstartup.devhelper.core.controllers.LoandingController">
+   <children>
+      <ProgressBar fx:id="progressbar" layoutX="148.0" layoutY="343.0" prefHeight="18.0" prefWidth="305.0" style="-fx-background-color: #171717;" styleClass="loanding_progress" />
+      <ImageView fitHeight="105.0" fitWidth="114.0" layoutX="82.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="214.0" layoutY="130.0" prefHeight="93.0" prefWidth="305.0" styleClass="loanding_title" text="DevHelper">
+         <font>
+            <Font name="System Bold" size="64.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

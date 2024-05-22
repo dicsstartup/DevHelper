@@ -11,23 +11,25 @@ public class HibernateUtil {
 
     private static EntityManagerFactory entityManagerFactory;
 
+    private static HibernateUtil instance;
+
     private HibernateUtil() {
-        // Constructor privado para evitar instanciación
+        entityManagerFactory = Persistence.createEntityManagerFactory("com.devhelper");
     }
 
-    public static EntityManagerFactory getEntityManagerFactory() {
-        if (entityManagerFactory == null) {
-            synchronized (HibernateUtil.class) {
-                if (entityManagerFactory == null) {
-                    entityManagerFactory = Persistence.createEntityManagerFactory("com.devhelper");
-                }
-            }
+    public static HibernateUtil getInstance() {
+        if (instance == null) {
+            instance = new HibernateUtil();
         }
+        return instance;
+    }
+
+    public EntityManagerFactory getEntityManagerFactory() {
         return entityManagerFactory;
     }
 
-    public static void shutdown() {
-        if (entityManagerFactory != null) {
+    public void shutdown() {
+        if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
             entityManagerFactory.close();
         }
     }
